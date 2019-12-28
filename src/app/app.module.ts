@@ -23,6 +23,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { PayBillComponent } from './pages/pay-bill/pay-bill.component';
 import { PaymenthistoryComponent } from './pages/paymenthistory/paymenthistory.component';
 import { TravelComponent } from './pages/travel/travel.component';
+import { CityGuideComponent } from './pages/city-guide/city-guide.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { TravelComponent } from './pages/travel/travel.component';
     HomepageComponent,
     PayBillComponent,
     PaymenthistoryComponent,
-    TravelComponent
+    TravelComponent,
+    CityGuideComponent
   ],
   imports: [
     BrowserModule,

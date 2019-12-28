@@ -15,6 +15,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { PayBillComponent } from "./pages/pay-bill/pay-bill.component";
 import { PaymenthistoryComponent } from './pages/paymenthistory/paymenthistory.component';
 import { TravelComponent } from "./pages/travel/travel.component";
+import { CityGuideComponent } from "./pages/city-guide/city-guide.component";
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: 'travel',
         component: TravelComponent
+      },
+      {
+        path: 'city-guide',
+        component: CityGuideComponent
       },
       {
         path: 'blank',
