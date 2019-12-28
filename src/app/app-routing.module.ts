@@ -31,7 +31,7 @@ const routes: Routes = [
         component: BlankComponent
       },
       {
-        path: '',
+        path: 'homepage',
         component: HomepageComponent
       },
       {
@@ -69,7 +69,7 @@ const routes: Routes = [
     component: LoginComponent,
     canActivate: [NonAuthGuard]
   },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'homepage' }
 ];
 
 @NgModule({
