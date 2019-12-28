@@ -22,34 +22,35 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
-            <table id="example2" class="table table-bordered table-hover">
-              <thead>
+            <table id="example2" class="table table-bordered table-hover" *ngFor="let prof of profile">
               <tr>
                 <th>Tc Kimlik Numarası </th>
-                <th>Adı </th>
-                <th>Soyadı </th>
-                <th>Doğum Tarihi </th>
-                <th>Adres</th>
-                <th>Telefon Numarası</th>
-                <th>Mail</th>
-                <th></th>
-              </tr>
-              </thead>
-              <tbody >
-              <tr *ngFor="let prof of profile">
                 <td>{{prof.tcNumber}}</td>
-                <td>{{prof.firstName}}</td>
-                <td>{{prof.lastName}}</td>
-                <td>{{prof.birthDate}}</td>
-                <td>{{prof.address}}</td>                  
-                <td>{{prof.phoneNumber}}</td>
-                <td>{{prof.mail}}</td>
-                <td><button type="button" class="btn btn-success btn-sm float-sm-none " >
-                    Düzenle
-                  </button></td>
               </tr>
-                                      
-              </tbody>
+              <tr>
+                <th>Adı </th>
+                <td>{{prof.firstName}}</td>
+              </tr>
+              <tr>
+                <th>Soyadı </th>
+                <td>{{prof.lastName}}</td>
+              </tr>
+              <tr>
+                <th>Doğum Tarihi </th>
+                <td>{{prof.birthDate}}</td>
+              </tr>  
+              <tr>
+                <th>Adres</th>
+                <td>{{prof.address}}</td> 
+              </tr>
+              <tr>
+                <th>Telefon Numarası</th>
+                <td>{{prof.phoneNumber}}</td>
+              </tr>
+              <tr>
+                <th>Mail</th>
+                <td>{{prof.mail}}</td>
+              </tr>
             </table>
           </div>
           <!-- /.card-body -->
