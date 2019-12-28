@@ -22,6 +22,7 @@ import { EftComponent } from './pages/eft/eft.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { PayBillComponent } from './pages/pay-bill/pay-bill.component';
 import { PaymenthistoryComponent } from './pages/paymenthistory/paymenthistory.component';
+import { TravelComponent } from './pages/travel/travel.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { PaymenthistoryComponent } from './pages/paymenthistory/paymenthistory.c
     EftComponent,
     HomepageComponent,
     PayBillComponent,
-    PaymenthistoryComponent
+    PaymenthistoryComponent,
+    TravelComponent
   ],
   imports: [
     BrowserModule,

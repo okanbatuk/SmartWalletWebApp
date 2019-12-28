@@ -1,4 +1,4 @@
-<aside #mainSidebar class="main-sidebar sidebar-dark-primary elevation-4" style="background-image: url(../../../../../assets/img/photo1.png);">
+<aside #mainSidebar class="main-sidebar sidebar-dark-primary elevation-4" style="background-image: url(../../../../../assets/img/sidebar.png);">
   <!-- Brand Logo -->
   <a [routerLink]="['/homepage']" class="brand-link">
     <img
@@ -7,7 +7,7 @@
       class="brand-image img-circle elevation-3"
       style="opacity: .8; background-color: white;"
     />
-    <span class="brand-text font-weight-light">Smart Wallet</span>
+    <span class="brand-text font-weight-light" style="color: white;">Smart Wallet</span>
   </a>
 
   <!-- Sidebar -->
@@ -23,7 +23,7 @@
       </div>
       <div class="info" *ngFor="let user of profile">
 
-        <a [routerLink]="['/profile']" class="d-block">{{user.firstName}} {{user.lastName}}</a>     <!-- İsim çekilecek..-->
+        <a [routerLink]="['/profile']" class="d-block" style="color: white;">{{user.firstName}} {{user.lastName}}</a>     <!-- İsim çekilecek..-->
       </div>
     </div>
 
@@ -35,34 +35,42 @@
         role="menu"
         data-accordion="false"
       >
+      <li class="nav-item">
+        <a [routerLink]="['/travel']" routerLinkActive="active" class="nav-link">
+          <i class="nav-icon fas fa-tram" style="color: white;"></i>
+          <p style="color: white;">
+            Seyahat Et
+          </p>
+        </a>
+      </li>
         <li class="nav-item">
           <a [routerLink]="['/deposit']" routerLinkActive="active" class="nav-link">
-            <i class="nav-icon fas fa-angle-right"></i>
-            <p>
+            <i class="nav-icon fas fa-angle-right" style="color: white;"></i>
+            <p style="color: white;">
               Para Yatır
             </p>
           </a>
         </li>
         <li class="nav-item">
           <a [routerLink]="['/virman']" routerLinkActive="active" class="nav-link">
-            <i class="nav-icon fas fa-compress-arrows-alt"></i>
-            <p>
+            <i class="nav-icon fas fa-compress-arrows-alt" style="color: white;"></i>
+            <p style="color: white;">
               Virman
             </p>
           </a>
         </li>
         <li class="nav-item">
           <a [routerLink]="['/eft']" routerLinkActive="active" class="nav-link">
-            <i class="nav-icon far fa-paper-plane"></i>
-            <p>
+            <i class="nav-icon far fa-paper-plane" style="color: white;"></i>
+            <p style="color: white;">
               Havale
             </p>
           </a>
         </li>
         <li class="nav-item">
           <a [routerLink]="['/payment']" routerLinkActive="active" class="nav-link">
-            <i class="nav-icon fab fa-cc-visa"></i>
-            <p>
+            <i class="nav-icon fab fa-cc-visa" style="color: white;"></i>
+            <p style="color: white;">
               Fatura Öde
             </p>
           </a>
