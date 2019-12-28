@@ -1,0 +1,51 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h3>Para Yatır</h3>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a [routerLink]="['/']">Anasayfa</a></li>
+            <li class="breadcrumb-item active">Para Yatır</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-sm-10">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Gerekli Bilgileri Girin!</h3>
+            </div>
+            <form [formGroup]="depositForm" (ngSubmit)="onSubmit()">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Hesap Numarası</label>
+                  <select formControlName="additionalNo" id="additionalNo" class="form-control">
+                      <option *ngFor="let opt of accounts" [value]="opt.additionalNo">{{opt.accNo}} - {{opt.additionalNo}} / Para miktarı: {{opt.Balance}} TL</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword2">Yatıralacak Miktar</label>
+                  <input formControlName="deposit" id="deposit" type="number" class="form-control"  placeholder="Miktar">
+                </div>
+              </div>
+              <!-- /.card-body -->
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Para Yatır</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+

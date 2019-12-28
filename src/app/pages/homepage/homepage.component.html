@@ -1,0 +1,60 @@
+<!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h3>Anasayfa</h3>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item active"><a [routerLink]="['/']">Anasayfa</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="card card-success">
+              <div class="card-header border-0">
+                <h3 class="card-title">Piyasadaki Markalar</h3>
+              </div>
+              <div class="card-body table-responsive p-0" style="height: 400px;">
+                <table class="table table-head-fixed">
+                  <thead>
+                  <tr>
+                    <th>Marka</th>
+                    <th>Borsa</th>
+                    <th>Satışlar</th>
+                    <!-- <th>Daha Fazla</th> -->
+                  </tr>
+                  </thead>
+                  <tbody *ngFor="let test of rates">
+                  <tr >                    
+                    <td >
+                       {{test.name}}
+                    </td>
+                    <td>{{test.exchange}}</td>
+                    <td>
+                      <small class="text-success mr-1">
+                        <i class="fas fa-arrow-up"></i>
+                        {{test.title}}
+                      </small>
+                      {{test.key}}
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->

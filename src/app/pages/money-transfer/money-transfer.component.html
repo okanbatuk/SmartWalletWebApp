@@ -1,0 +1,57 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h3>Para Transferleri</h3>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a [routerLink]="['/']">Anasayfa</a></li>
+            <li class="breadcrumb-item active">Para Transferleri</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+    <!-- /.container-fluid -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>Gönderen Hesap</th>
+                  <th>Alıcı Hesap</th>
+                  <th>Gönderilen Miktar</th>
+                  <th>İşlem Türü</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let monTrans of moneyTransfer">
+                  <td>{{monTrans.SENDER}} <a href="/money-transfer"><i class="fas fa-eye float-sm-right"></i></a> </td>
+                  <td>{{monTrans.RECIPIENT}}</td>
+                  <td>{{monTrans.pay}} TRY</td>
+                  <td>{{monTrans.ACTIVITY}}</td>
+                  <td>
+                    <span *ngIf="monTrans.senderAccNo == accNo && monTrans.ACTIVITY == 'HAVALE' " style="color: red;" class="fas fa-arrow-right fa-lg"></span>
+                    <span *ngIf="monTrans.senderAccNo != accNo && monTrans.ACTIVITY == 'HAVALE' " style="color: green;" class="fas fa-arrow-left fa-lg"></span>
+                    <span *ngIf="monTrans.ACTIVITY == 'VIRMAN' " style="color: rgb(10, 156, 192);" class="fas fa-arrows-alt fa-lg"></span>
+                  </td>
+                </tr>                         
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->           
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+  </section>

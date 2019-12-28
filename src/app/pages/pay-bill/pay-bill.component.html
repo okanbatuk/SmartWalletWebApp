@@ -1,0 +1,98 @@
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h3>Fatura Öde</h3>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a [routerLink]="['/']">Anasayfa</a></li>
+            <li class="breadcrumb-item active">Fatura Öde</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <form [formGroup]="payForm" (ngSubmit)="paySubmit()">
+  <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-sm-6">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Gerekli Bilgileri Girin!</h3>
+              </div>
+              
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="additionalNo">Ödeme Yapacak Hesap</label>
+                    <select formControlName="additionalNo" id="additionalNo" class="form-control">
+                      <option *ngFor="let opt of accounts" [value]="opt.additionalNo" [selected]="opt.selected">{{opt.accNo}} - {{opt.additionalNo}} / Para miktarı: {{opt.Balance}} TL</option>                
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="billID">Fatura Numarası</label>
+                    <select formControlName="billID" id="billID" class="form-control" *ngIf="queryBill.length>0">
+                        <option *ngFor="let bills of queryBill" [value]="bills.BillID" [selected]="bills.selected">{{bills.BillID}} - Numaralı Fatura | Ödenecek Tutar: {{bills.Debt}} TL</option>                
+                      </select>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" [disabled]="loading" >Ödeme Yap</button>
+                  <img *ngIf="loadingpay" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>  
+                </div>
+              
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">Fatura Sorgula</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div class="input-group input-group-sm">
+                  <input type="number" maxlength="6" formControlName="subsID" id="subsID" class="form-control" placeholder="Abone Numarası">
+                  <span class="input-group-append">
+                    <button (click)="querySubmit()" type="button" class="btn btn-info btn-flat" [disabled]="loading">
+                      Fatura Sorgula
+                      <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>  
+                    </button>
+                    
+                  </span>
+                </div>
+              
+                <table class="table table-striped" *ngIf="queryBill.length>0">
+                  <thead>
+                    <tr>
+                      <th>Fatura ID</th>
+                      <th>Abone Adı</th>
+                      <th>Fatura Tipi</th>
+                      <th>Fatura Dönemi</th>
+                      <th>Fatura Tutarı</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let bills of queryBill">
+                      <td>{{bills.BillID}}</td>
+                      <td>{{bills.Type}}</td>
+                      <td>{{bills.Customer}}</td>
+                      <td>{{bills.Term}}</td>
+                      <td>{{bills.Debt}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </form>

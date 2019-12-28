@@ -1,0 +1,79 @@
+{
+  "name": "stuxnet_webapp",
+  "version": "1.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "node server.js",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot --prod"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~9.0.0-next.12",
+    "@angular/common": "~9.0.0-next.12",
+    "@angular/compiler": "~9.0.0-next.12",
+    "@angular/core": "~9.0.0-next.12",
+    "@angular/forms": "~9.0.0-next.12",
+    "@angular/http": "^7.2.15",
+    "@angular/platform-browser": "~9.0.0-next.12",
+    "@angular/platform-browser-dynamic": "~9.0.0-next.12",
+    "@angular/router": "~9.0.0-next.12",
+    "@types/axios": "^0.14.0",
+    "axios": "^0.19.0",
+    "bootstrap": "^4.3.1",
+    "core-js": "^2.5.4",
+    "express": "^4.17.1",
+    "font-awesome": "4.7.0",
+    "ionicons": "2.0.1",
+    "ngx-toastr": "^10.2.0",
+    "path": "^0.12.7",
+    "rxjs": "~6.5.3",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.900.0-next.14",
+    "@angular/cli": "~9.0.0-next.14",
+    "@angular/compiler-cli": "~9.0.0-next.12",
+    "@angular/language-service": "~9.0.0-next.12",
+    "@fortawesome/fontawesome-free": "^5.10.2",
+    "@types/jasmine": "~2.8.8",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+    "admin-lte": "3.0.0-rc.1",
+    "codelyzer": "^5.0.1",
+    "jasmine-core": "~2.99.1",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "^4.3.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-jasmine": "~1.1.2",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "protractor": "~5.4.0",
+    "ts-node": "~7.0.0",
+    "tslint": "~5.11.0",
+    "typescript": "~3.6.4"
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.2.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YusufDEDE/StuxNET_WebApp.git"
+  },
+  "engines": {
+    "node": "~12.13.1",
+    "npm": "~6.12.1"
+  },
+  "keywords": [
+    "StuxNET_WebApp"
+  ],
+  "author": "Yusuf Dede",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YusufDEDE/StuxNET_WebApp/issues"
+  },
+  "homepage": "https://github.com/YusufDEDE/StuxNET_WebApp#readme"
+}

@@ -1,0 +1,64 @@
+<div style="background-image: url(../../../../assets/img/photo4.jpg);">
+    <!-- <img src="../../assets/img/background-arka-plan-mavi-tahta.jpg" style="background-image: image();" alt="Background"> -->
+    <div class="login-box">
+        <div class="login-logo">
+            <img src="../../assets/img/SmartWallet.png" style="width:200px;height:200px;" alt="Smart City"/>
+          </div>
+      <!-- /.login-logo -->
+      <div class="card" style="background-color:rgb(90, 83, 83); opacity:0.89999999 ;">
+        <div class="card-body login-card-body" style="background-color: rgb(90, 83, 83);">
+          <p style="font-size: large; color: white;"><b class="login-box-msg">Lütfen giriş yapınız..<img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" /></b></p>
+          <form [formGroup]="loginForm" style="background-color: rgb(90, 83, 83);">
+            <div class="input-group mb-3">
+              <input
+                formControlName="tc"
+                type="number"
+                class="form-control"
+                min="10000000000"
+                max="99999999999"
+                maxlength="11"
+                autofocus
+                placeholder="TC Kimlik Numarası"
+                style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"
+                />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span style="color: white;" class="fas fa-user"></span>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <input
+                formControlName="pw"
+                type="password"
+                class="form-control"
+                placeholder="Şifre"
+                minlength="6"
+                maxlength="12"
+                ngModel required
+                style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"
+                />
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <span style="color: white;" class="fas fa-lock"></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <button
+                  [disabled]="loading"
+                  (click)="onSubmit()"
+                  type="submit"
+                  class="btn-1"
+                >
+                  Giriş
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+
