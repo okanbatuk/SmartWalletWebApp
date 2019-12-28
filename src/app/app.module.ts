@@ -24,6 +24,7 @@ import { PayBillComponent } from './pages/pay-bill/pay-bill.component';
 import { PaymenthistoryComponent } from './pages/paymenthistory/paymenthistory.component';
 import { TravelComponent } from './pages/travel/travel.component';
 import { CityGuideComponent } from './pages/city-guide/city-guide.component';
+import { PastTripComponent } from './pages/past-trip/past-trip.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CityGuideComponent } from './pages/city-guide/city-guide.component';
     PayBillComponent,
     PaymenthistoryComponent,
     TravelComponent,
-    CityGuideComponent
+    CityGuideComponent,
+    PastTripComponent
   ],
   imports: [
     BrowserModule,
