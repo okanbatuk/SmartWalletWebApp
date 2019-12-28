@@ -21,7 +21,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     const currentUser = this.authenticationService.currentUserValue;
     this.tc = localStorage.getItem("tc");
-    console.log("tc", this.tc);
     this.getUserInfo(currentUser.token, this.tc);
   }
 
@@ -38,7 +37,6 @@ export class ProfileComponent implements OnInit {
       config
     ).then((response) => {
       this.profile = response.data;
-      console.log("profile_> ", this.profile);
     }).catch((error) => {
       console.log(error)
     });

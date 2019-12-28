@@ -54,17 +54,10 @@ export class PayBillComponent implements OnInit {
   get f() { return this.payForm.controls; }
 
 
-  getAccountInfo(additNo:number, withdraw:number){
-    console.log(additNo, withdraw);
-  }
-
   paySubmit(){
     this.loadingpay = true
 
     const currentUser = this.authenticationService.currentUserValue;
-    console.log("pay submit querybill, ", this.queryBill);
-    console.log("pay Submit formcontrol"  , this.f.additionalNo.value, this.f.dept.value, this.f.billID.value);
-
     if (this.f.additionalNo.value == '' || this.f.billID.value == ''){
       this.alertService.error("Ödeme veya fatura bilgisi seçilmedi!");
       this.loadingpay = false;
@@ -74,7 +67,6 @@ export class PayBillComponent implements OnInit {
           this.BillID = this.queryBill[i].BillID;
           this.Debt = this.queryBill[i].Debt;
           this.Area = this.queryBill[i].Area;
-          console.log("queryBill _>", this.BillID, this.Debt, this.Area, currentUser.token);
         }
       }
   
@@ -82,7 +74,6 @@ export class PayBillComponent implements OnInit {
         if (this.accounts[i].additionalNo == this.f.additionalNo.value) {
           if (this.accounts[i].Balance < this.Debt){
             this.alertService.warning("Hesabanızda yeterli bakiye bulumamaktadır!");
-            console.log(localStorage.getItem('accNo'));
             this.loadingpay = false;
           }else{
             this.payBill(
@@ -102,7 +93,6 @@ export class PayBillComponent implements OnInit {
   }
 
   querySubmit() {
-    console.log(this.f.subsID.value);
     if (this.f.subsID.value == ''){
       this.alertService.error("Abone Numarası boş bırakılamaz!");
       this.loading = false;
@@ -125,7 +115,6 @@ export class PayBillComponent implements OnInit {
       config
     ).then((response) => {
       this.accounts = response.data;
-      console.log("acount_> ", this.accounts);
     }).catch((error) => {
       console.log(error)
     });
@@ -138,14 +127,12 @@ export class PayBillComponent implements OnInit {
         this.queryBill = response.data;
         if(response.data.status == 404){
           this.alertService.error(subsID, "Abone numaralı fatura bulunamadı!");
-          console.log("ww");
           this.loading = false;
         }
         else{
           this.alertService.success(subsID, "Abone numaralı fatura bulundu!");
           this.loading = false;
         }
-        console.log("bill query :", response.data.status);
       }).catch((error)=> {
          console.log(error); 
       });
@@ -168,13 +155,11 @@ export class PayBillComponent implements OnInit {
       config
     ).then((response) => {
       if(response.data.recordset[0].Status == 1){
-        console.log("pay _>", billID, accNo, additNo);
         axios.post('https://stuxnet-payment.herokuapp.com/pay', {
           billID:parseInt(billID),
           accNo:parseInt(accNo),
           additNo:parseInt(additNo)
         }).then((response) => {
-          console.log("uloooooooooooooooooo ",response)
           if(response.data) {
             this.alertService.success("Fatura yatırma işlemi başarılı!");
             this.router.navigate(['/paymenthistory']);
@@ -185,10 +170,7 @@ export class PayBillComponent implements OnInit {
         }).catch((error) => {
           console.log("promise error _>",error);
         })
-      }else{
-        
       }
-      console.log("api/payment res_> ", response.data.recordset[0]) ;
     }).catch((error) => {
       console.log(error)
     });

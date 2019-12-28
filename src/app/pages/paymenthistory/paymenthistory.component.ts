@@ -21,7 +21,6 @@ export class PaymenthistoryComponent implements OnInit {
   ngOnInit() {
     const currentUser = this.authenticationService.currentUserValue;
     this.tc = localStorage.getItem("tc");
-    console.log("tc", this.tc);
     this.getPayHistory(currentUser.token, this.tc);
   }
 
@@ -38,7 +37,6 @@ export class PaymenthistoryComponent implements OnInit {
       config
     ).then((response) => {
       this.paymentHistory = response.data;
-      console.log("paymenthistory_> ", this.paymentHistory);
     }).catch((error) => {
       console.log(error)
     });

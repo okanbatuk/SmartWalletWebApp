@@ -52,14 +52,6 @@ export class HomepageComponent implements OnInit {
   get f() { return this.predictForm.controls; } 
 
   onSubmit() {
-    console.log("predict form", 
-      this.f.credit.value, 
-      this.f.age.value, 
-      this.f.home.value,
-      this.f.creditCount.value,
-      this.f.phoneState.value
-      );
-
       if (this.f.credit.value == '' || 
           this.f.age.value == '' || 
           this.f.home.value == '' ||
@@ -99,7 +91,6 @@ export class HomepageComponent implements OnInit {
       bodyParameters,
     ).then((response) => {
       this.decisionRes = response.data;
-      console.log("Decisiicob_> ", this.decisionRes);
       this.loading = false;
     }).catch((error) => {
       console.log(error)

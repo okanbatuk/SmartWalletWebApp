@@ -24,7 +24,6 @@ export class MainComponent implements OnInit {
   }
 
   toggleMenuSidebar() {
-    console.log('sidebarMenuCollapsed', this.sidebarMenuOpened);
     if (this.sidebarMenuOpened) {
       this.renderer.removeClass(document.body, 'sidebar-open');
       this.renderer.addClass(document.body, 'sidebar-collapse');

@@ -30,10 +30,8 @@ export class AppService {
 }
 
   login(tc, pw) {
-    console.log(tc, pw);
         return this.http.post<any>(this.url+'/login', { tc, pw })
             .pipe(map(user => {
-                console.log(user);
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
                     localStorage.setItem("tc", tc);
@@ -61,7 +59,6 @@ export class AppService {
       config
     ).then((response) => {
       localStorage.setItem('accNo', response.data[0].accNo);
-      console.log("account_> ", localStorage.getItem('accNo'));
     }).catch((error) => {
       console.log(error)
     });
@@ -72,6 +69,5 @@ export class AppService {
     localStorage.removeItem('token');
     localStorage.removeItem('accNo');
     this.currentUserSubject.next(null);
-    console.log("logout!");
   }
 }

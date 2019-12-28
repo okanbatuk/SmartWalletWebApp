@@ -26,7 +26,6 @@ export class AccountlistComponent implements OnInit {
   ngOnInit() {
     const currentUser = this.authenticationService.currentUserValue;
     this.tc = localStorage.getItem("tc");
-    console.log("tc", this.tc);
     this.getAccount(currentUser.token, this.tc);
   }
 
@@ -36,7 +35,6 @@ export class AccountlistComponent implements OnInit {
   }
 
   delAccOnclik(additNo) {
-    console.log("burası del");
     const currentUser = this.authenticationService.currentUserValue;
     this.removeAccount(currentUser.token, this.tc, additNo);
   }
@@ -54,7 +52,6 @@ export class AccountlistComponent implements OnInit {
       config
     ).then((response) => {
       this.accounts = response.data;
-      console.log("account_> ", this.accounts);
     }).catch((error) => {
       console.log(error)
     });
@@ -78,7 +75,6 @@ export class AccountlistComponent implements OnInit {
       } else{
         this.alertService.error("Hesap Açma işlemi başarısız!");
       }
-      console.log("account_> ", response.data.recordset[0]);
     }).catch((error) => {
       console.log(error)
     });
@@ -96,14 +92,12 @@ export class AccountlistComponent implements OnInit {
       bodyParameters,
       config
     ).then((response) => {
-      console.log("aha res", response.data.status);
       if(response.data.status == 500){
         this.alertService.error("Hesapta para var! Hesap kapatma işlemi başarısız!");
       } else{
         this.alertService.success("Hesap Kapatma işlemi başarılı!");
         this.router.navigate(['/accountlist']);
       }
-      console.log("account_> ", response.data);
     }).catch((error) => {
       console.log(error)
     });

@@ -54,7 +54,6 @@ export class MenuSidebarComponent implements OnInit, AfterViewInit {
     }).catch((error) => {
       console.log(error)
     });
-    console.log(this.profile);
   }
 
   ngAfterViewInit() {

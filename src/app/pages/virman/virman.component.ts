@@ -38,23 +38,15 @@ export class VirmanComponent implements OnInit {
 
     const currentUser = this.authenticationService.currentUserValue;
     this.tc = localStorage.getItem("tc");
-    //this.depositAdd(currentUser.token, this.tc, 1017, 100);
     this.getAccount(currentUser.token, this.tc);
   }
 
   get f() { return this.virmanForm.controls; } 
 
-  getAccountInfo(additNo:number, deposit:number){
-    console.log(additNo, deposit);
-  }
-
   onSubmit(){
     if (this.f.money.value <= 0 || this.f.sendAddit.value==0 || this.f.recAddit.value==0) {
-      console.log('asdasdasda'+this.f.money.value);
       this.alertService.error("Lütfen bilgileri boşluk bırakmadan doğru giriniz !!")
     } else if (this.f.sendAddit.value == this.f.recAddit.value) {
-      console.log('aasdasd'+this.f.sendAddit.value);
-      console.log('qweqwe'+this.f.recAddit.value);
       this.alertService.error("Gönderici ile alıcı hesap aynı olamaz !!")
     } else {
       const currentUser = this.authenticationService.currentUserValue;
@@ -79,7 +71,6 @@ export class VirmanComponent implements OnInit {
       config
     ).then((response) => {
       this.accounts = response.data;
-      console.log("account_> ", this.accounts);
     }).catch((error) => {
       console.log(error)
     });
@@ -108,7 +99,6 @@ export class VirmanComponent implements OnInit {
         this.alertService.success("Virman işlemi başarılı!");
         this.router.navigate(['/accountlist']);
       }
-      console.log("virman_> ", this.success);
     }).catch((error) => {
       console.log(error)
     });

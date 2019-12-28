@@ -44,9 +44,6 @@ export class DepositComponent implements OnInit {
 
   get f() { return this.depositForm.controls; } 
   
-  getAccountInfo(additionalNo:number, deposit:number){
-    console.log(additionalNo, deposit); 
-  }
 
   onSubmit() {
     if(this.f.deposit.value == 0 || this.f.additionalNo.value == 0 || this.f.deposit.value <= 0){
@@ -73,7 +70,6 @@ export class DepositComponent implements OnInit {
       config
     ).then((response) => {
       this.accounts = response.data;
-      console.log("account_> ", this.accounts);
     }).catch((error) => {
       console.log(error)
     });
@@ -101,7 +97,6 @@ export class DepositComponent implements OnInit {
         this.alertService.success("Para yatırma işlemi başarılı!");
         this.router.navigate(['/accountlist']);
       }
-      console.log("deposit_> ", this.success);
     }).catch((error) => {
       console.log(error)
     });

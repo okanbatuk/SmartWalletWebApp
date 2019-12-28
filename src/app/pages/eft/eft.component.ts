@@ -49,16 +49,8 @@ export class EftComponent implements OnInit {
 
   get f() { return this.eftForm.controls; } 
 
-  /*getAccountInfo(additNo:number, eft:number){
-    console.log(additNo, eft);
-  }*/
 
   onSubmit() {
-    console.log("money"+this.f.money.value);
-    console.log("sendaddit",this.f.sendAddit.value)
-    console.log("recAcc",this.f.recAcc.value);
-    console.log("recaddit",this.f.recAddit.value);
-
     if(this.f.money.value <= 0 || this.f.sendAddit.value == 0){
 
       this.alertService.error("Lütfen bilgileri boşluk bırakmadan doğru giriniz!");
@@ -86,14 +78,12 @@ export class EftComponent implements OnInit {
       config
     ).then((response) => {
       this.accounts = response.data;
-      console.log("eft_> ", response.data);
     }).catch((error) => {
       console.log(error)
     });
   }
 
   eftAdd(token, tc, sendAddit, recAcc, recAddit,money) {
-    console.log(sendAddit, recAcc, recAddit,money)
     var config = {
       headers:{'token': "" + token}
     }
@@ -108,7 +98,6 @@ export class EftComponent implements OnInit {
       bodyParameters,
       config
     ).then((response) => {
-      console.log("res", response.data)
       this.success = response.data;
       if(parseFloat(money) <= 0 || this.success.status == 500 ){
         this.alertService.error("EFT işlemi başarısız!");
@@ -116,7 +105,6 @@ export class EftComponent implements OnInit {
         this.alertService.success("EFT işlemi başarılı!");
         this.router.navigate(['/accountlist']);
       }
-      console.log("eft_> ", this.success);
     }).catch((error) => {
       console.log(error)
     });

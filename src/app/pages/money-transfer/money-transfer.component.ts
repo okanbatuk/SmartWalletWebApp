@@ -24,7 +24,6 @@ export class MoneyTransferComponent implements OnInit {
     this.tc = localStorage.getItem("tc");
     this.getMoneyTransfer(currentUser.token, this.tc);
     this.accNo = String(localStorage.getItem('accNo'));
-    console.log("accno init ", this.accNo);
   }
 
   getMoneyTransfer(token, tcs) {
@@ -42,11 +41,9 @@ export class MoneyTransferComponent implements OnInit {
       config
     ).then((response) => {
       this.moneyTransfer = response.data.recordset;
-      console.log("test _>", response, 'win', this.moneyTransfer); // bitince uçur burayı
     }).catch((error) => {
       console.log(error)
     });
-    console.log(this.moneyTransfer);
   }
 
 
