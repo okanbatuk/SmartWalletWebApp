@@ -126,11 +126,11 @@ export class PayBillComponent implements OnInit {
       .then((response)=> {
         this.queryBill = response.data;
         if(response.data.status == 404){
-          this.alertService.error(subsID, "Abone numaralı fatura bulunamadı!");
+          this.alertService.error(`${subsID} Abone numaralı fatura bulunamadı!`);
           this.loading = false;
         }
         else{
-          this.alertService.success(subsID, "Abone numaralı fatura bulundu!");
+          this.alertService.success( `${subsID} Abone numaralı fatura bulundu!`);
           this.loading = false;
         }
       }).catch((error)=> {

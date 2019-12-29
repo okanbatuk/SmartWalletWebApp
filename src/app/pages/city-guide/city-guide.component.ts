@@ -14,21 +14,24 @@ export class CityGuideComponent implements OnInit {
   url:string = '';
   success:any;
   tc:any;
-  cityGuide: FormGroup;
+  cityID:number;
+  vehicles: any [] = [];
+  cityGuideForm: FormGroup;
 
   loading:false;
 
   constructor(
-    private formBuilder: FormBuilder,
+  /*   private formBuilder: FormBuilder,
     public appService: AppService,
     private authenticationService: AppService,
     private alertService: ToastrService,
-    private router: Router
+    private router: Router */
   ) { }
 
   ngOnInit() {
-    this.cityGuide = this.formBuilder.group({})  //içi dolacak
+    /* this.cityGuideForm = this.formBuilder.group({
+      cityID: ['',Validators.required]
+    })   *///içi dolacak
   }
-  const currentUser = this
 
 }
