@@ -65,7 +65,7 @@ export class TravelComponent implements OnInit {
       if(response.data == '') {
         this.alertService.error(`Araç Bilgisi Bulunamadı`);
       } else {
-        this.alertService.success(`Araç Bilgisi Getirildi`);
+        this.alertService.success(`Araç Bilgileri Getirildi`);
       }
       this.loading = false;
     }).catch((error) => {
