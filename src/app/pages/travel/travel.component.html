@@ -15,4 +15,74 @@
     </div>
     <!-- /.container-fluid -->
     <!-- /.container-fluid -->
-    <section class="content">
+  </section>
+
+<form [formGroup]="travelForm" >
+<section class="content">
+            <div class="container-fluid">
+              <div class="row">
+                <!-- left column -->
+                <div class="col-sm-6">
+                  <!-- general form elements -->
+                  <div class="card card-primary">
+                    <div class="card-header">
+                      <h3 class="card-title">Gerekli Bilgileri Girin!</h3>
+                    </div>
+
+                      <div class="card-body">
+                        <div class="form-group">
+                          <label for="cityID">Şehir Seçiniz</label>
+                          <select formControlName="cityID" id="cityID" class="form-control">
+                            <option *ngFor="let opt of cities" [value]="opt.cityID" [selected]="opt.selected">{{opt.cityID}} - {{opt.cityName}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- /.card-body -->
+                      <div class="card-footer">
+                        <button (click)="querySubmit()" type="button" class="btn btn-primary" [disabled]="loading" >Araçları Getir</button>
+                        <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+                      </div>
+
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <div class="card card-success">
+                    <div class="card-header">
+                      <h3 class="card-title">Seyahat Edebileceğiniz Araç Bilgileri</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                    
+                      <table class="table table-striped" *ngIf="vehicles.length>0">
+                        <thead>
+                          <tr>
+                            <th>Seyahat Güzergâhı</th>
+                            <th>Seyahat Saatleri</th>
+                            <th>Ücret</th>
+                            <th>İndirimli Ücret</th>
+                            <th>Araç Tipi</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let vehicle of vehicles">
+                            <td>{{vehicle.startPoint}} - {{vehicle.endPoint}}</td>
+                            <td>{{vehicle.firstVoyage}} - {{vehicle.lastVoyage}}</td>
+                            <td>{{vehicle.price}}</td>
+                            <td>{{vehicle.reductionPrice}}</td>
+                            <td>{{vehicle.typeName}}</td>
+                            <td><button>Seyahat Et</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+                </div>
+                
+              </div>
+            </div>
+          </section>
+        </form>
