@@ -62,17 +62,15 @@
                             <th>Ücret</th>
                             <th>İndirimli Ücret</th>
                             <th>Araç Tipi</th>
-                            <th></th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr *ngFor="let vehicle of vehicles">
                             <td>{{vehicle.startPoint}} - {{vehicle.endPoint}}</td>
                             <td>{{vehicle.firstVoyage}} - {{vehicle.lastVoyage}}</td>
-                            <td>{{vehicle.price}}</td>
-                            <td>{{vehicle.reductionPrice}}</td>
+                            <td>{{vehicle.price}} TL</td>
+                            <td>{{vehicle.reductionPrice}} TL </td>
                             <td>{{vehicle.typeName}}</td>
-                            <td><button>Seyahat Et</button></td>
                           </tr>
                         </tbody>
                       </table>
