@@ -21,7 +21,7 @@
           <div class="card">
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example2" class="table table-bordered table-hover" *ngIf="paymentHistory.length>0">
+              <table id="example2" class="table table-bordered table-hover" *ngIf="paymentHistory.length>0; else other">
                 <thead>
                 <tr>
                   <th>Hesap Numarası </th>
@@ -40,6 +40,9 @@
                                         
                 </tbody>
               </table>
+              <ng-template #other>
+                <h4> Fatura Ödemeniz Bulunmamaktadır..</h4>
+              </ng-template>
             </div>
             <!-- /.card-body -->
           </div>

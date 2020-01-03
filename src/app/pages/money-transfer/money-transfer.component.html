@@ -21,7 +21,7 @@
           <div class="card">
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example2" class="table table-bordered table-hover" *ngIf="moneyTransfer.length>0">
+              <table id="example2" class="table table-bordered table-hover" *ngIf="moneyTransfer.length>0;else other">
                 <thead>
                 <tr>
                   <th>Gönderen Hesap</th>
@@ -45,6 +45,9 @@
                 </tr>                         
                 </tbody>
               </table>
+              <ng-template #other>
+                <h4> Para Hareketiniz Bulunmamaktadır..</h4>
+              </ng-template>
             </div>
             <!-- /.card-body -->
           </div>
