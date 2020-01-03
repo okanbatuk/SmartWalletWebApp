@@ -22,7 +22,7 @@
             <div class="container-fluid">
               <div class="row">
                 <!-- left column -->
-                <div class="col-sm-6">
+                <div class="col-sm-3">
                   <!-- general form elements -->
                   <div class="card card-primary">
                     <div class="card-header">
@@ -46,7 +46,7 @@
                   </div>
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-sm-9">
                   <div class="card card-success">
                     <div class="card-header">
                       <h3 class="card-title">Seyahat Edebileceğiniz Araç Bilgileri</h3>
@@ -54,26 +54,37 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                     
-                      <table class="table table-striped" *ngIf="vehicles.length>0">
+                      <table class="table table-striped" *ngIf="vehicles.length>0; else other">
                         <thead>
                           <tr>
+                            <th>Araç No</th>
                             <th>Seyahat Güzergâhı</th>
                             <th>Seyahat Saatleri</th>
                             <th>Ücret</th>
                             <th>İndirimli Ücret</th>
                             <th>Araç Tipi</th>
+                            <!-- <th></th> -->
                           </tr>
                         </thead>
                         <tbody>
                           <tr *ngFor="let vehicle of vehicles">
+                            <td>{{vehicle.vehicleID}}</td>
                             <td>{{vehicle.startPoint}} - {{vehicle.endPoint}}</td>
                             <td>{{vehicle.firstVoyage}} - {{vehicle.lastVoyage}}</td>
                             <td>{{vehicle.price}} TL</td>
                             <td>{{vehicle.reductionPrice}} TL </td>
                             <td>{{vehicle.typeName}}</td>
+                            <!-- <td>
+                              <button (click)='travel()'  type="button"  class="btn btn-success btn-sm float-sm-right" >
+                                Seyahat Et
+                              </button>
+                            </td> -->
                           </tr>
                         </tbody>
                       </table>
+                      <ng-template #other>
+                        <h4> Bu şehire kayıtlı bilgisi bulunmamaktadır..</h4>
+                      </ng-template>
                     </div>
                     <!-- /.card-body -->
                   </div>

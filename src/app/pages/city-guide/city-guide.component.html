@@ -18,3 +18,120 @@
     <section class="content">
 
 
+      <form [formGroup]="cityGuideForm" >
+        <section class="content">
+                    <div class="container-fluid">
+                      <div class="row">
+                        <!-- left column -->
+                        <div class="col-sm-3">
+                          <!-- general form elements -->
+                          <div class="card card-primary">
+                            <div class="card-header">
+                              <h3 class="card-title">Gerekli Bilgileri Girin!</h3>
+                            </div>
+        
+                              <div class="card-body">
+                                <div class="form-group">
+                                  <label for="cityID">Şehir Seçiniz</label>
+                                  <select formControlName="cityID" id="cityID" class="form-control">
+                                    <option *ngFor="let opt of cities" [value]="opt.cityID" [selected]="opt.selected">{{opt.cityID}} - {{opt.cityName}}</option>
+                                  </select>
+                                </div>
+                                <div class="form-group">
+                                  <label for="corpType">Kurum Tipini Seçiniz</label>
+                                  <select formControlName="corpType" id="corpType" class="form-control">
+                                    <option [value]="1" >1 - Müze </option>
+                                    <option [value]="2" >2 - Park Alanı </option>
+                                    <option [value]="3" >3 - Kütüphane </option>
+                                  </select>
+                                </div>
+                              </div>
+                              <!-- /.card-body -->
+                              <div class="card-footer">
+                                <button (click)="querySubmit()" type="button" class="btn btn-primary" [disabled]="loading" >Bilgileri Getir</button>
+                                <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+                              </div>
+        
+                          </div>
+                        </div>
+        
+                        <div class="col-sm-9"*ngIf="institutions.length>0; else libraries">
+                          <div class="card card-success">
+                            <div class="card-header">
+                              <h3 class="card-title">Gidebileceğiniz Kurumların Bilgileri</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                            
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Adı</th>
+                                    <th>Çalışma Saatleri</th>
+                                    <th>Adres</th>
+                                    <th>Ücret</th>
+                                    <th>Hafta Sonları</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let inst of institutions">
+                                    <td>{{inst.name}}</td>
+                                    <td>{{inst.openedHour}} - {{inst.closureHour}}</td>
+                                    <td>{{inst.address}}</td>
+                                    <td>{{inst.price}} TL</td>
+                                    <td>{{inst.atOpenedWeekend}} </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                              <ng-template #other>
+                                <h4> Bu şehire kayıtlı kurum bilgisi bulunmamaktadır..</h4>
+                              </ng-template>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                        <ng-template #libraries>
+                          <div class="col-sm-9">
+                            <div class="card card-success">
+                              <div class="card-header">
+                                <h3 class="card-title">Gidebileceğiniz Kurumların Bilgileri</h3>
+                              </div>
+                              <!-- /.card-header -->
+                              <div class="card-body">
+                              
+                                <table class="table table-striped" *ngIf="library.length>0;else otherS">
+                                  <thead>
+                                    <tr>
+                                      <th>Adı</th>
+                                      <th>Çalışma Saatleri</th>
+                                      <th>Adres</th>
+                                      <th>Kitap Sayısı</th>
+                                      <th>Hafta Sonları</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let lib of library">
+                                      <td>{{lib.name}}</td>
+                                      <td>{{lib.openedHour}} - {{lib.closureHour}}</td>
+                                      <td>{{lib.address}}</td>
+                                      <td>{{lib.bookCount}}</td>
+                                      <td>{{lib.atOpenedWeekend}} </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                                <ng-template #other>
+                                  <h4> Bu şehire kayıtlı kurum bilgisi bulunmamaktadır..</h4>
+                                </ng-template>
+                              </div>
+                              <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                          </div>
+                          
+                        </ng-template>
+                        
+                      </div>
+                    </div>
+                  </section>
+                </form>

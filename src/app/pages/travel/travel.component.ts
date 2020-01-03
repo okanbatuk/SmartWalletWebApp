@@ -17,6 +17,9 @@ export class TravelComponent implements OnInit {
   cities:any [];
   vehicles:any [] = [];
   travelForm: FormGroup;
+  tc:any;
+  additNo:number
+  isStudent:any;
 
   loading = false;
 
@@ -32,9 +35,12 @@ export class TravelComponent implements OnInit {
     this.travelForm = this.formBuilder.group({
       cityID: ['', Validators.required]
     });
-    const currentUser = this.authService.currentUserValue;
+    this.tc = localStorage.getItem("tc");
     this.getCity();
+    this.getPerson(this.tc);
   }
+
+
 
   get f() { return this.travelForm.controls;}
 
@@ -47,6 +53,18 @@ export class TravelComponent implements OnInit {
       console.log(error)
     });
   }
+  getPerson(tc) {
+    axios.post(
+      'https://smartwallet-transportation.herokuapp.com/personInfo',
+      {tc}
+    ).then((response) => {
+      if (response.data[0].isStudent=true) {
+        this.isStudent = 1
+      } else {
+        this.isStudent = 0
+      }
+    })
+  }
 
   querySubmit() {
     if(this.f.cityID.value=='' || this.f.cityID.value==0 ) {
@@ -56,6 +74,17 @@ export class TravelComponent implements OnInit {
       this.vehicle(this.f.cityID.value);
     }
   }
+
+  /* travel() {
+    const currentUser = this.authService.currentUserValue;
+    if (this.isStudent = 1) {
+      console.log(this.f.vehicleID.value);
+    } else {
+      
+    }
+    this.travelProcess(currentUser.token,this.f.vehicleID.value,this.f.);
+  } */
+
   vehicle(cityID) {
     this.loading = true;
     axios.post(
@@ -72,5 +101,45 @@ export class TravelComponent implements OnInit {
       console.log(error)
     });
   }
+
+  /* travelProcess(token,vehicleID,price) {
+    var bodyParamaters = {
+      tc:this.tc,
+      vehicleID,
+    }
+    //this.loading = true;
+    axios.post(
+      this.url+'/travel',
+      bodyParamaters
+    ).then((response)=> {
+      if (response.data.recordset[0].Status == 1) {
+        var config = {
+          headers: {'token':""+token}
+        }
+        var bodyParamaters = {
+          tc:this.tc,
+          1001:this.additNo,
+          price:parseFloat(price)
+        }
+        axios.post(
+          'https://stuxnetapi.herokuapp.com/api/account/withdraw',
+          bodyParamaters,
+          config
+        ).then((response) => {
+          this.success = response.data;
+          if (response.data.status == 500) {
+            this.alertService.error("Seyahat İşlemi Başarısız");
+          } else {
+            this.alertService.success("Seyahat İşlemi Başarılı");
+            this.router.navigate(['/past-trip']);
+          }
+        })
+      } else {
+        this.alertService.error("Bir hata oluştu..");
+      }
+    }).catch((error) => {
+      console.log(error)
+    });
+  } */
 
 }
