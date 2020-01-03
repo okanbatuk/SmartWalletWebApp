@@ -16,3 +16,47 @@
     <!-- /.container-fluid -->
     <!-- /.container-fluid -->
     <section class="content">
+
+      <section class="content">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-hover" *ngIf="travels.length>0;else other">
+                  <thead>
+                  <tr>
+                    <th>Güzergah</th>
+                    <th>Ödeme Tutarı</th>
+                    <th>Yolculuk Zamanı</th>
+                    <th>Araç Tipi</th>
+                    <th>Şehir</th>
+                    <th>
+                      
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody >
+                  <tr *ngFor="let travel of travels">
+                    <td>{{travel.startPoint}} - {{travel.endPoint}}</td>
+                    <td>{{travel.Price}} TL</td>
+                    <td>{{travel.date}}</td>
+                    <td>{{travel.typeName}}</td>
+                    <td>{{travel.cityName}}</td> 
+                  </tr>
+                  </tbody>
+                </table>
+                <ng-template #other>
+                  <h4> Geçmiş Yolculuğunuz Bulunamadı..</h4>
+                </ng-template>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->           
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </section>
