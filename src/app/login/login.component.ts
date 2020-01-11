@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     get f() { return this.loginForm.controls; }
 
     onSubmit() {
-        if (this.f.tc.value == '' && this.f.pw.value == ''){
+        if (this.f.tc.value == '' || this.f.pw.value == ''){
             this.alertService.error("Tc veya şifre boş bırakılamaz!");
             this.loading = false;
         }else{

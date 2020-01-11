@@ -75,15 +75,15 @@ export class TravelComponent implements OnInit {
     }
   }
 
-  /* travel() {
+  travel() {
     const currentUser = this.authService.currentUserValue;
     if (this.isStudent = 1) {
-      console.log(this.f.vehicleID.value);
+      console.log(this.f);
     } else {
       
     }
-    this.travelProcess(currentUser.token,this.f.vehicleID.value,this.f.);
-  } */
+    //this.travelProcess(currentUser.token,this.f.vehicleID.value,this.f.);
+  }
 
   vehicle(cityID) {
     this.loading = true;
